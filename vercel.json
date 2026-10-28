@@ -1,0 +1,19 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/((?!js/|assets/|api/).*)",
+      "headers": [
+        {
+          "key": "Set-Cookie",
+          "value": "nw_lb=edge-a; Path=/; Max-Age=3600; Secure; HttpOnly; SameSite=Lax"
+        }
+      ]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    }
+  ]
+}

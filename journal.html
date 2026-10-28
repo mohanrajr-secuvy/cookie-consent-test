@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>211 miles, one tent: testing the Ridgeline on the JMT — Northwind Journal</title>
+    <meta name="description" content="What broke, what didn't, and what we changed before launch." />
+
+    <!-- ===================== SECUVY CONSENT FILES =====================
+         Paste the published Secuvy files here: first in <head>, in this order.
+    <script src="https://consent.beta.secuvy.com/policy-config/YOUR-TENANT/script.blocker.rule.js"></script>
+    <script src="https://consent.beta.secuvy.com/common/secuvy.blocker.script.js"></script>
+    <link rel="stylesheet" href="https://consent.beta.secuvy.com/common/secuvy.dsar.style.css" />
+    <script src="https://consent.beta.secuvy.com/policy-config/YOUR-TENANT/secuvy.dsar.script.js"></script>
+    ====================================================================== -->
+
+    <!-- Essential site scripts (necessary: never create a blocking rule for these) -->
+    <script src="js/site/script-monitor.js"></script>
+    <script src="js/site/vendor-config.js"></script>
+    <script src="js/site/tracker-kit.js"></script>
+    <script src="js/site/preferences.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+
+    <!-- Tag managers, analytics, A/B testing (head) -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NW7TEST"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW7TEST001"></script>
+    <script src="js/vendors/analytics/newrelic-browser.js"></script>
+    <script src="js/vendors/personalization/optimizely.js"></script>
+    <script src="js/vendors/personalization/vwo.js"></script>
+    <script src="js/vendors/analytics/hotjar.js"></script>
+    <script async src="js/vendors/analytics/clarity.js"></script>
+    <script async src="js/vendors/analytics/segment-analytics.js"></script>
+    <script async src="js/vendors/analytics/matomo.js"></script>
+    <script async src="https://browser.sentry-cdn.com/7.119.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Advertising pixels (head) -->
+    <script async src="https://connect.facebook.net/en_US/fbevents.js"></script>
+    <script async src="https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=CNW7TESTPIXEL0000001&lib=ttq"></script>
+    <script async src="https://s.pinimg.com/ct/core.js"></script>
+    <script async src="https://sc-static.net/scevent.min.js"></script>
+    <script async src="https://static.ads-twitter.com/uwt.js"></script>
+    <script async src="https://www.redditstatic.com/ads/pixel.js"></script>
+    <script async src="https://snap.licdn.com/li.lms-analytics/insight.min.js"></script>
+    <script async src="https://bat.bing.com/bat.js"></script>
+    <script async src="https://a.quora.com/qevents.js"></script>
+    <script async src="js/vendors/marketing/mailchimp.js"></script>
+    <script async src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="i-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20L14.5 5l-3.6 6.4L8.6 8z"/><circle cx="18" cy="5" r="2"/></symbol>
+      <symbol id="i-tent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 12 4l9 16M2 20h20M12 4v16M8.5 20 12 13l3.5 7"/></symbol>
+      <symbol id="i-pack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="15" rx="3"/><path d="M9 6V4h6v2M6 13h12M10 16h4"/></symbol>
+      <symbol id="i-boot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h6v8l6 3c2 1 3 2 3 4v2H3v-4l3-2zM3 20h18M12 7h-3M12 10H9"/></symbol>
+      <symbol id="i-jacket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 3 4-3 4 3v15H4V6zM12 6v15M8 3v5M16 3v5"/></symbol>
+      <symbol id="i-lantern" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v3M14 3v3M7 6h10l-1 13H8zM12 10v5"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 4-4 2 2-4z"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h12v10H2zM14 10h4l4 4v2h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15zM5 19l9-9"/></symbol>
+      <symbol id="i-return" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M4 10a8 8 0 1 1 2 6"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    </svg>
+
+    <div class="announcement">Free shipping on orders over $75 · Lifetime repairs on everything we make</div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html"><svg><use href="#i-logo"/></svg>Northwind</a>
+        <nav class="main-nav" aria-label="Main">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="journal.html">Journal</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark mode"><svg><use href="#i-moon"/></svg></button>
+          <a class="icon-btn" href="shop.html" aria-label="Cart"><svg><use href="#i-cart"/></svg><span class="cart-count" data-cart-count hidden>0</span></a>
+          <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <article class="section container">
+        <div class="article">
+          <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="journal.html">Journal</a> / Trip reports</div>
+          <span class="eyebrow">Trip report</span>
+          <h1>211 miles, one tent: testing the Ridgeline on the John Muir Trail</h1>
+          <div class="article-meta">
+            <span class="avatar" aria-hidden="true"></span>
+            <span><strong>Lena Okafor</strong>, Senior product designer<br />October 14, 2026 · 9 min read</span>
+          </div>
+        </div>
+
+        <figure class="article-cover">
+          <svg viewBox="0 0 1050 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Granite peaks above an alpine lake">
+            <defs>
+              <linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fc5d9"/><stop offset="1" stop-color="#f3d9b8"/></linearGradient>
+              <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f86a0"/><stop offset="1" stop-color="#21495c"/></linearGradient>
+            </defs>
+            <rect width="1050" height="450" fill="url(#dawn)"/>
+            <path d="M0 300 140 150l80 70 120-170 130 160 90-90 150 140 110-120 230 180v130H0z" fill="#8a96a3"/>
+            <path d="M260 50 300 100l-40 10zM700 90l40 50-50 6z" fill="#fff" opacity=".8"/>
+            <path d="M0 320 120 250l120 50 150-80 160 90 140-60 170 70 190-50v180H0z" fill="#4b5d55"/>
+            <rect y="350" width="1050" height="100" fill="url(#lake)"/>
+            <path d="M80 360h140M400 380h220M760 365h160" stroke="#cfe3ec" stroke-width="3" opacity=".6"/>
+          </svg>
+        </figure>
+
+        <div class="article">
+          <p>The Ridgeline started as a sketch on a napkin at Tuolumne Meadows. Two years and fourteen prototypes later, we wanted to know whether it could survive the trip that inspired it: the full John Muir Trail, Yosemite Valley to the summit of Mount Whitney, in a single push.</p>
+          <p>Four of us carried production-ready samples. Our only rule was that nothing got babied. Tents went up in the dark, came down wet, and got stuffed into the bottom of packs that were already too full.</p>
+
+          <h2>Days 1–4: Granite and thunderstorms</h2>
+          <p>Afternoon storms rolled in like clockwork above Donohue Pass. The first real test came at Thousand Island Lake, where gusts flattened two of the three other tents at our campsite. The Ridgeline's crossing-pole hub held, but the leeward guy-out pulled through its webbing loop. We had a fix sketched before dinner.</p>
+
+          <blockquote>“A tent you can't repair in the field is a tent you'll eventually abandon in the field.”</blockquote>
+
+          <figure>
+            <div class="embed">
+              <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ?enablejsapi=1" title="Trail footage" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <figcaption>Footage from the crew's daily check-ins, edited down to four minutes.</figcaption>
+          </figure>
+
+          <h2>Days 5–9: The long middle</h2>
+          <p>Evolution Basin is where gear either earns its place or gets mailed home from Muir Trail Ranch. Our boots were on their third river crossing of the morning. The Trailblazer's resoleable midsole is heavier than a foam runner, but nobody's feet blistered, and the toe caps took the granite without delaminating.</p>
+
+          <figure>
+            <div class="embed">
+              <iframe src="https://maps.google.com/maps?q=Evolution%20Lake%2C%20California&z=11&output=embed" title="Map of Evolution Basin" loading="lazy"></iframe>
+            </div>
+            <figcaption>Evolution Basin, Kings Canyon National Park.</figcaption>
+          </figure>
+
+          <h2>Days 10–12: Up and over</h2>
+          <p>Forester Pass at 13,200 feet. Whitney at dawn. By the time we walked into Whitney Portal, the Ridgeline had been pitched 11 times in rain, hail, and one memorably calm night under a full moon. We changed three things before launch: reinforced guy-out points, a longer vestibule zip, and a stuff sack you can actually get the tent back into.</p>
+
+          <div class="share-bar">
+            <strong>Share this story</strong>
+            <div class="sharethis-inline-share-buttons"></div>
+            <a class="btn btn-ghost btn-small" href="shop.html">Shop the Ridgeline</a>
+            <button class="btn btn-primary btn-small" type="button" data-add-to-cart="NW-TENT-2P" data-product-name="Ridgeline 2P Tent">Add the tent to cart</button>
+          </div>
+
+          <section class="comments" aria-label="Comments">
+            <h3>Comments (3)</h3>
+            <div class="comment"><strong>Jordan P.</strong><span class="muted">I did the JMT in 2024 with your old Ridgeline. The guy-out loop thing was real. Glad it's fixed.</span></div>
+            <div class="comment"><strong>Sam T.</strong><span class="muted">Did anyone try the tent with trekking poles instead of the main poles?</span></div>
+            <div class="comment"><strong>Lena Okafor</strong><span class="muted">@Sam: not on this trip. It's on the list for the Wonderland Trail test next spring.</span></div>
+            <div id="disqus_thread"></div>
+            <form class="comment-form" onsubmit="event.preventDefault(); this.querySelector('.form-message').textContent = 'Thanks! Your comment is awaiting moderation.';">
+              <textarea aria-label="Your comment" placeholder="Add a comment…"></textarea>
+              <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+              <button class="btn btn-primary btn-small" type="submit">Post comment</button>
+              <p class="form-message muted" role="status"></p>
+            </form>
+          </section>
+        </div>
+      </article>
+
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-head"><div><span class="eyebrow">More from the journal</span><h2>Keep reading</h2></div></div>
+          <div class="post-grid">
+            <article class="post-card">
+              <div class="thumb" style="background:linear-gradient(150deg,#c7793a,#7a3f16)"></div>
+              <div><span class="eyebrow">Repair guide</span><h3><a href="journal.html">How to resole a hiking boot (and when not to)</a></h3><p class="muted">6 min read</p></div>
+            </article>
+            <article class="post-card">
+              <div class="thumb" style="background:linear-gradient(150deg,#3d7a5c,#1f3a2d)"></div>
+              <div><span class="eyebrow">Inside Northwind</span><h3><a href="journal.html">18,000 repairs: a year in the Portland workshop</a></h3><p class="muted">8 min read</p></div>
+            </article>
+            <article class="post-card">
+              <div class="thumb" style="background:linear-gradient(150deg,#5b6c8f,#2b3450)"></div>
+              <div><span class="eyebrow">Skills</span><h3><a href="journal.html">Pitching a tent in high wind: a field guide</a></h3><p class="muted">5 min read</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container newsletter">
+          <div>
+            <h2>Trail notes, once a month</h2>
+            <p>Trip reports like this one, repair guides and early access to new gear.</p>
+          </div>
+          <form data-newsletter novalidate>
+            <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required />
+            <button class="btn" type="submit">Subscribe</button>
+            <p class="form-message" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html"><svg><use href="#i-logo"/></svg>Northwind</a>
+            <p class="muted">Outdoor gear built to last, since 1988. Portland, Oregon.</p>
+          </div>
+          <div><h4>Shop</h4><ul><li><a href="shop.html">Tents</a></li><li><a href="shop.html">Backpacks</a></li><li><a href="shop.html">Footwear</a></li><li><a href="shop.html">Outerwear</a></li></ul></div>
+          <div><h4>Help</h4><ul><li><a href="shop.html">Shipping</a></li><li><a href="shop.html">Returns</a></li><li><a href="journal.html">Repairs</a></li><li><a href="#" data-open-chat>Contact us</a></li></ul></div>
+          <div><h4>Company</h4><ul><li><a href="journal.html">Journal</a></li><li><a href="journal.html">Sustainability</a></li><li><a href="#">Careers</a></li><li><a href="#">Stores</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> Northwind Outfitters (test site for cookie consent)</span>
+          <span><a href="#">Privacy policy</a> · <a href="#">Cookie policy</a> · <a href="#">Do not sell or share my personal information</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <button class="btn btn-primary chat-fab" type="button" data-open-chat><svg width="18" height="18"><use href="#i-chat"/></svg>Chat with us</button>
+    <div class="toast" role="status" aria-live="polite"></div>
+
+    <!-- UI libraries (deferred) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.11/dayjs.min.js"></script>
+
+    <!-- Media, sharing and bot protection -->
+    <script async src="https://www.youtube.com/iframe_api"></script>
+    <script async src="https://platform-api.sharethis.com/js/sharethis.js#property=000000000000000000000001&product=inline-share-buttons"></script>
+    <script async defer src="https://www.google.com/recaptcha/api.js"></script>
+
+    <!-- Analytics (body) -->
+    <script defer src="js/vendors/analytics/mixpanel.js"></script>
+    <script defer src="js/vendors/analytics/amplitude.js"></script>
+    <script defer src="js/vendors/analytics/heap.js"></script>
+    <script defer src="js/vendors/analytics/fullstory.js"></script>
+    <script defer src="js/vendors/analytics/adobe-analytics.js"></script>
+
+    <!-- Marketing automation (body) -->
+    <script async src="js/vendors/marketing/hubspot.js"></script>
+    <script async src="js/vendors/marketing/marketo-munchkin.js"></script>
+    <script async src="js/vendors/unknown/px-sync.js"></script>
+    <script async src="js/vendors/unknown/collect.js"></script>
+
+    <!-- Comments, chat and support widgets -->
+    <script defer src="js/vendors/functional/disqus.js"></script>
+    <script defer src="js/vendors/functional/intercom.js"></script>
+    <script defer src="js/vendors/functional/zendesk-widget.js"></script>
+
+    <!-- Essential site scripts (necessary: never create a blocking rule for these) -->
+    <script src="js/site/nav.js"></script>
+    <script src="js/site/cart.js"></script>
+    <script src="js/site/newsletter.js"></script>
+    <script type="module" src="js/site/site.module.js"></script>
+    <script nomodule src="js/site/legacy.nomodule.js"></script>
+    <script src="js/site/tag-manager.js"></script>
+
+    <!-- Inline script: has no src, so a src rule can never hold it (control case) -->
+    <script>
+      document.cookie = "nw_inline_marker=journal; path=/; max-age=86400; SameSite=Lax";
+    </script>
+  </body>
+</html>

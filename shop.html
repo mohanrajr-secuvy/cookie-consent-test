@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shop all gear — Northwind Outfitters</title>
+    <meta name="description" content="Tents, backpacks, boots, shells and camp kit. Free shipping over $75." />
+
+    <!-- ===================== SECUVY CONSENT FILES =====================
+         Paste the published Secuvy files here: first in <head>, in this order.
+    <script src="https://consent.beta.secuvy.com/policy-config/YOUR-TENANT/script.blocker.rule.js"></script>
+    <script src="https://consent.beta.secuvy.com/common/secuvy.blocker.script.js"></script>
+    <link rel="stylesheet" href="https://consent.beta.secuvy.com/common/secuvy.dsar.style.css" />
+    <script src="https://consent.beta.secuvy.com/policy-config/YOUR-TENANT/secuvy.dsar.script.js"></script>
+    ====================================================================== -->
+
+    <!-- Essential site scripts (necessary: never create a blocking rule for these) -->
+    <script src="js/site/script-monitor.js"></script>
+    <script src="js/site/vendor-config.js"></script>
+    <script src="js/site/tracker-kit.js"></script>
+    <script src="js/site/preferences.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+
+    <!-- Payments: Stripe recommends loading Stripe.js on every page, sync in <head> -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Tag managers, analytics, A/B testing (head) -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NW7TEST"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW7TEST001"></script>
+    <script src="js/vendors/analytics/newrelic-browser.js"></script>
+    <script src="js/vendors/personalization/optimizely.js"></script>
+    <script src="js/vendors/personalization/vwo.js"></script>
+    <script type="module" src="js/vendors/personalization/nosto.js"></script>
+    <script src="js/vendors/analytics/hotjar.js"></script>
+    <script async src="js/vendors/analytics/clarity.js"></script>
+    <script async src="js/vendors/analytics/segment-analytics.js"></script>
+    <script async src="https://browser.sentry-cdn.com/7.119.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Advertising pixels (head) -->
+    <script async src="https://connect.facebook.net/en_US/fbevents.js"></script>
+    <script async src="https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=CNW7TESTPIXEL0000001&lib=ttq"></script>
+    <script async src="https://s.pinimg.com/ct/core.js"></script>
+    <script async src="https://sc-static.net/scevent.min.js"></script>
+    <script async src="https://static.ads-twitter.com/uwt.js"></script>
+    <script async src="https://www.redditstatic.com/ads/pixel.js"></script>
+    <script async src="https://snap.licdn.com/li.lms-analytics/insight.min.js"></script>
+    <script async src="https://bat.bing.com/bat.js"></script>
+    <script async src="https://www.googleadservices.com/pagead/conversion_async.js"></script>
+    <script async src="js/vendors/marketing/klaviyo.js"></script>
+    <script async src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+    <!-- Structured data: not JavaScript, the browser never runs it -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Ridgeline 2P Tent",
+        "brand": { "@type": "Brand", "name": "Northwind Outfitters" },
+        "offers": { "@type": "Offer", "price": "389.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "842" }
+      }
+    </script>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="i-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20L14.5 5l-3.6 6.4L8.6 8z"/><circle cx="18" cy="5" r="2"/></symbol>
+      <symbol id="i-tent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 12 4l9 16M2 20h20M12 4v16M8.5 20 12 13l3.5 7"/></symbol>
+      <symbol id="i-pack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="15" rx="3"/><path d="M9 6V4h6v2M6 13h12M10 16h4"/></symbol>
+      <symbol id="i-boot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h6v8l6 3c2 1 3 2 3 4v2H3v-4l3-2zM3 20h18M12 7h-3M12 10H9"/></symbol>
+      <symbol id="i-jacket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 3 4-3 4 3v15H4V6zM12 6v15M8 3v5M16 3v5"/></symbol>
+      <symbol id="i-lantern" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v3M14 3v3M7 6h10l-1 13H8zM12 10v5"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 4-4 2 2-4z"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h12v10H2zM14 10h4l4 4v2h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15zM5 19l9-9"/></symbol>
+      <symbol id="i-return" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M4 10a8 8 0 1 1 2 6"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    </svg>
+
+    <div class="announcement">Free shipping on orders over $75 · Lifetime repairs on everything we make</div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html"><svg><use href="#i-logo"/></svg>Northwind</a>
+        <nav class="main-nav" aria-label="Main">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="journal.html">Journal</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark mode"><svg><use href="#i-moon"/></svg></button>
+          <a class="icon-btn" href="#checkout" aria-label="Cart"><svg><use href="#i-cart"/></svg><span class="cart-count" data-cart-count hidden>0</span></a>
+          <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="breadcrumbs"><a href="index.html">Home</a> / Shop</div>
+          <h1>All gear</h1>
+          <p class="muted">48 products · Designed in Portland, built to be repaired.</p>
+        </div>
+      </section>
+
+      <section class="container shop-layout">
+        <aside class="filters" aria-label="Filters">
+          <h3>Category</h3>
+          <label><input type="checkbox" checked /> Tents &amp; shelters</label>
+          <label><input type="checkbox" checked /> Backpacks</label>
+          <label><input type="checkbox" checked /> Footwear</label>
+          <label><input type="checkbox" checked /> Outerwear</label>
+          <label><input type="checkbox" /> Camp kitchen</label>
+          <h3>Activity</h3>
+          <label><input type="checkbox" /> Backpacking</label>
+          <label><input type="checkbox" /> Day hiking</label>
+          <label><input type="checkbox" /> Car camping</label>
+          <h3>Price</h3>
+          <label><input type="radio" name="price" checked /> Any price</label>
+          <label><input type="radio" name="price" /> Under $100</label>
+          <label><input type="radio" name="price" /> $100 – $250</label>
+          <label><input type="radio" name="price" /> $250+</label>
+          <h3>Currency</h3>
+          <select data-currency aria-label="Currency">
+            <option value="USD">USD $</option>
+            <option value="EUR">EUR €</option>
+            <option value="GBP">GBP £</option>
+            <option value="INR">INR ₹</option>
+          </select>
+        </aside>
+
+        <div>
+          <div class="toolbar">
+            <span class="muted">Showing 9 of 48</span>
+            <select aria-label="Sort by">
+              <option>Sort: Featured</option>
+              <option>Price: low to high</option>
+              <option>Price: high to low</option>
+              <option>Top rated</option>
+            </select>
+          </div>
+
+          <div class="product-grid">
+            <article class="product-card">
+              <div class="product-media" style="--tint:#dfe9e2"><span class="badge">New</span><svg><use href="#i-tent"/></svg></div>
+              <div class="product-body">
+                <h3>Ridgeline 2P Tent</h3>
+                <div class="rating">★★★★★ <span>(842)</span></div>
+                <div class="price-row"><span class="price">$389</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-TENT-2P" data-product-name="Ridgeline 2P Tent">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#e5efe8"><svg><use href="#i-tent"/></svg></div>
+              <div class="product-body">
+                <h3>Basecamp 4P Tent</h3>
+                <div class="rating">★★★★☆ <span>(311)</span></div>
+                <div class="price-row"><span class="price">$549</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-TENT-4P" data-product-name="Basecamp 4P Tent">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#efe2d0"><svg><use href="#i-pack"/></svg></div>
+              <div class="product-body">
+                <h3>Summit 45L Backpack</h3>
+                <div class="rating">★★★★★ <span>(1,204)</span></div>
+                <div class="price-row"><span class="price">$189</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-PACK-45" data-product-name="Summit 45L Backpack">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#f3e7d6"><svg><use href="#i-pack"/></svg></div>
+              <div class="product-body">
+                <h3>Daybreak 22L Daypack</h3>
+                <div class="rating">★★★★★ <span>(688)</span></div>
+                <div class="price-row"><span class="price">$99</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-PACK-22" data-product-name="Daybreak 22L Daypack">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#e8dccf"><span class="badge">Sale</span><svg><use href="#i-boot"/></svg></div>
+              <div class="product-body">
+                <h3>Trailblazer Mid Boots</h3>
+                <div class="rating">★★★★☆ <span>(2,031)</span></div>
+                <div class="price-row"><span class="price">$159<s>$199</s></span><button class="btn btn-primary btn-small" data-add-to-cart="NW-BOOT-MID" data-product-name="Trailblazer Mid Boots">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#dde4ee"><svg><use href="#i-jacket"/></svg></div>
+              <div class="product-body">
+                <h3>Stormshell Rain Jacket</h3>
+                <div class="rating">★★★★★ <span>(967)</span></div>
+                <div class="price-row"><span class="price">$229</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-SHELL-3L" data-product-name="Stormshell Rain Jacket">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#e4e0ef"><svg><use href="#i-jacket"/></svg></div>
+              <div class="product-body">
+                <h3>Loft 800 Down Hoody</h3>
+                <div class="rating">★★★★★ <span>(523)</span></div>
+                <div class="price-row"><span class="price">$279</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-DOWN-800" data-product-name="Loft 800 Down Hoody">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#f2ead2"><svg><use href="#i-lantern"/></svg></div>
+              <div class="product-body">
+                <h3>Ember Rechargeable Lantern</h3>
+                <div class="rating">★★★★☆ <span>(402)</span></div>
+                <div class="price-row"><span class="price">$49</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-LANTERN" data-product-name="Ember Lantern">Add</button></div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-media" style="--tint:#d9e8ea"><svg><use href="#i-compass"/></svg></div>
+              <div class="product-body">
+                <h3>Bearing Baseplate Compass</h3>
+                <div class="rating">★★★★★ <span>(219)</span></div>
+                <div class="price-row"><span class="price">$39</span><button class="btn btn-primary btn-small" data-add-to-cart="NW-COMPASS" data-product-name="Bearing Compass">Add</button></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="checkout">
+        <div class="container checkout-box">
+          <div>
+            <span class="eyebrow">Secure checkout</span>
+            <h2>Ready when you are</h2>
+            <p class="muted">Pay by card, PayPal or in four interest-free instalments with Klarna. Orders ship within one business day.</p>
+            <div class="pay-methods"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>PayPal</span><span>Klarna</span><span>Apple Pay</span></div>
+            <div class="card-field">Card number · MM / YY · CVC (Stripe Elements mounts here)</div>
+            <div id="paypal-buttons"></div>
+            <klarna-placement data-key="credit-promotion-badge" data-locale="en-US" data-purchase-amount="38900"></klarna-placement>
+          </div>
+          <div>
+            <h3>Order summary</h3>
+            <p class="muted">Items in cart: <strong data-cart-count>0</strong></p>
+            <p class="muted">Shipping: Free over $75</p>
+            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
+            <button class="btn btn-primary" type="button">Place order</button>
+            <p class="muted" style="font-size:.85rem;margin-top:12px">This is a test store. No orders are placed.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container newsletter">
+          <div>
+            <h2>Get restock alerts</h2>
+            <p>Be first to know when sold-out gear comes back. No spam, ever.</p>
+          </div>
+          <form data-newsletter novalidate>
+            <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required />
+            <button class="btn" type="submit">Notify me</button>
+            <p class="form-message" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html"><svg><use href="#i-logo"/></svg>Northwind</a>
+            <p class="muted">Outdoor gear built to last, since 1988. Portland, Oregon.</p>
+          </div>
+          <div><h4>Shop</h4><ul><li><a href="shop.html">Tents</a></li><li><a href="shop.html">Backpacks</a></li><li><a href="shop.html">Footwear</a></li><li><a href="shop.html">Outerwear</a></li></ul></div>
+          <div><h4>Help</h4><ul><li><a href="shop.html">Shipping</a></li><li><a href="shop.html">Returns</a></li><li><a href="journal.html">Repairs</a></li><li><a href="#" data-open-chat>Contact us</a></li></ul></div>
+          <div><h4>Company</h4><ul><li><a href="journal.html">Journal</a></li><li><a href="journal.html">Sustainability</a></li><li><a href="#">Careers</a></li><li><a href="#">Stores</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> Northwind Outfitters (test site for cookie consent)</span>
+          <span><a href="#">Privacy policy</a> · <a href="#">Cookie policy</a> · <a href="#">Do not sell or share my personal information</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <button class="btn btn-primary chat-fab" type="button" data-open-chat><svg width="18" height="18"><use href="#i-chat"/></svg>Chat with us</button>
+    <div class="toast" role="status" aria-live="polite"></div>
+
+    <!-- UI libraries (deferred) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.11/dayjs.min.js"></script>
+
+    <!-- Payments and bot protection -->
+    <script defer src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&components=buttons"></script>
+    <script async src="https://js.klarna.com/web-sdk/v1/klarna.js" data-client-id="00000000-0000-0000-0000-000000000000"></script>
+    <script async defer src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+
+    <!-- Analytics (body) -->
+    <script defer src="js/vendors/analytics/mixpanel.js"></script>
+    <script defer src="js/vendors/analytics/amplitude.js"></script>
+    <script defer src="js/vendors/analytics/heap.js"></script>
+    <script defer src="js/vendors/analytics/fullstory.js"></script>
+    <script defer src="js/vendors/analytics/adobe-analytics.js"></script>
+
+    <!-- Marketing automation and affiliates (body) -->
+    <script async src="js/vendors/marketing/hubspot.js"></script>
+    <script async src="js/vendors/marketing/marketo-munchkin.js"></script>
+    <script async src="js/vendors/marketing/pardot.js"></script>
+    <script async src="js/vendors/marketing/cj-affiliate.js"></script>
+    <script async src="js/vendors/marketing/optinmonster.js"></script>
+    <script async src="js/vendors/unknown/px-sync.js"></script>
+    <script async src="js/vendors/unknown/collect.js"></script>
+
+    <!-- Chat, support and reviews widgets -->
+    <script defer src="js/vendors/functional/intercom.js"></script>
+    <script defer src="js/vendors/functional/zendesk-widget.js"></script>
+    <script defer src="js/vendors/functional/livechat.js"></script>
+    <script async src="js/vendors/functional/yotpo.js"></script>
+
+    <!-- Essential site scripts (necessary: never create a blocking rule for these) -->
+    <script src="js/site/nav.js"></script>
+    <script src="js/site/cart.js"></script>
+    <script src="js/site/newsletter.js"></script>
+    <script type="module" src="js/site/site.module.js"></script>
+    <script nomodule src="js/site/legacy.nomodule.js"></script>
+    <script src="js/site/tag-manager.js"></script>
+
+    <!-- Inline script: has no src, so a src rule can never hold it (control case) -->
+    <script>
+      document.cookie = "nw_inline_marker=shop; path=/; max-age=86400; SameSite=Lax";
+    </script>
+  </body>
+</html>
