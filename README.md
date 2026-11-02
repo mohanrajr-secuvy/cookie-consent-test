@@ -5,7 +5,8 @@ consent flow end to end: scan → categorise → publish `script.blocker.rule.js
 block before consent → release after consent.
 
 - 3 pages: `/` (home), `/shop`, `/journal`
-- 54–59 `<script src>` tags per page, 62–67 once the tag manager has run, 84 unique script URLs across the site
+- 480–485 `<script src>` tags per page, 563–568 once both tag managers have run (616–621 after a scroll and a click), 635 unique script URLs across the site
+- A bulk set of 550 generated mock vendors, 110 per category, to stress-test the blocker (see "Bulk mock vendors")
 - Real third-party tags, mock vendor tags that always set cookies, scripts injected after load and on interaction, module/nomodule scripts, inline scripts, iframes, and server-set HttpOnly cookies
 
 No build step and no dependencies.
@@ -42,6 +43,9 @@ api/session.js                        Vercel function: Set-Cookie (HttpOnly etc.
 vercel.json                           clean URLs, Set-Cookie header on pages
 js/site/                              essential first-party scripts (never block)
 js/vendors/<category>/                mock vendor tags, one file per vendor
+js/vendors/<category>/bulk/           generated bulk mock vendors (110 per category)
+tools/generate-bulk-vendors.mjs       regenerates the bulk set and its page blocks
+tools/bulk-manifest.csv               every bulk script: category, file, load, cookie, storage key
 ```
 
 ## Essential scripts: do not create blocking rules for these
@@ -58,6 +62,7 @@ js/vendors/<category>/                mock vendor tags, one file per vendor
 | `js/site/site.module.js` | `type="module"` | Starts AOS + Swiper if present |
 | `js/site/legacy.nomodule.js` | `nomodule` | Never fetched by modern browsers (monitor shows `skipped`) |
 | `js/site/tag-manager.js` | sync, body | Injects the dynamic tags below |
+| `js/site/bulk-tag-manager.js` | sync, body | Injects the 125 dynamic bulk tags (generated) |
 
 ## Real third-party scripts (dummy IDs)
 
@@ -174,6 +179,40 @@ keep their first value across page loads, as real trackers do.
 |---|---|---|---|
 | `unknown/px-sync.js` | async | all | `_px_sync_uid` (1y), `cs_vid` (30d, `SameSite=None`) |
 | `unknown/collect.js` | async | shop, journal | `_cid_x` (1y) · LS `__fp_hash` |
+
+## Bulk mock vendors (stress set)
+
+550 generated mock vendors, 110 in each of analytics, marketing, functional,
+personalization and unknown, live in `js/vendors/<category>/bulk/`. **All of them are on every
+page**, so scanning any one page finds them. They test that the blocker holds
+hundreds of scripts at once, across every load method, without any slipping through.
+`tools/bulk-manifest.csv` lists every file with its category, load method,
+cookie and storage key, so you can check the scan's categorisation against it.
+
+| Load method (per category) | Count | Where |
+|---|---|---|
+| sync | 20 | head |
+| async | 20 | head |
+| defer | 20 | end of body |
+| async | 15 | end of body |
+| `type="module"` | 10 | end of body |
+| dynamic, via `bulk-tag-manager.js` | 25 | 5 each on DOM ready, load + 1.5s, load + 5s, first scroll, first click |
+
+Dynamic tags rotate through the insertion methods used by `tag-manager.js`
+(`appendChild`, `insertBefore`, `setAttribute` + `append`, `prepend`,
+`insertAdjacentElement`, `after`, and `.type` set after `.src`).
+
+- **Proof of running**: each bulk script writes a localStorage key
+  `nwb.<category>.<file>`. Every 10th one also sets a cookie `nwb_<a|m|f|p|u><nnn>`
+  (55 in total). The rest set no cookie, because Chrome keeps only ~180 cookies per
+  host, and 550 more would evict the vendor cookies above and bloat the `Cookie`
+  request header.
+- **Unknown**: 80 have generic names (`px-ping.js`), and 30 have hash-like names
+  (`s-3e592f.js`) with no vendor hint at all.
+- **Regenerate**: `node tools/generate-bulk-vendors.mjs` (Node 18+). It rewrites the
+  `bulk/` folders, `js/site/bulk-tag-manager.js` and the manifest, and replaces the
+  `BULK VENDOR SCRIPTS` blocks in each page. Change the counts or the cookie ratio at the
+  top of the file. Do not edit the generated files by hand.
 
 ## How the tag manager injects scripts
 
